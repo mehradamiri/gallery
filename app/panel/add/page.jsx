@@ -1,6 +1,7 @@
 "use client";
 
 import ImageUploader from "@/app/components/ImageUploader";
+import Swal from "sweetalert2";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import PocketBase from "pocketbase";
@@ -12,7 +13,9 @@ const AddArt = () => {
   const [description, setDescription] = useState("");
   const [artName, setArtName] = useState("");
   const [image, setImage] = useState("");
+  const [err, setErr] = useState(false);
   const Uploader = useRef(null);
+  // const MySwal = withReactContent(Swal);
 
   const pb = new PocketBase("http://127.0.0.1:8090");
 
@@ -22,8 +25,26 @@ const AddArt = () => {
     formData.append("art", image);
     formData.append("name", artName);
     formData.append("description", description);
-    console.log("description : " + description, "artName : " + artName);
-    const createdRecord = await pb.collection("posts").create(formData);
+    const createdRecord = await pb
+      .collection("posts")
+      .create(formData)
+      .then((res) =>
+        Swal.fire({
+          title: "اثر با موفقیت ثبت شد",
+          icon: "success",
+          position: "bottom-right",
+        })
+      )
+      .catch((err) => {
+        Swal.fire({
+          title: err.message,
+          icon: "error",
+          position: "bottom-right",
+        });
+        console.error(err);
+        setErr(true);
+      });
+    setErr(false);
   };
 
   return (
@@ -57,6 +78,7 @@ const AddArt = () => {
               onChange={(e) => setArtName(e.target.value)}
             />
           </div>
+          <p>{err && err}</p>
           <button className="flex w-full justify-center mt-5 bg-sky-600 text-white py-2 rounded-lg font-bold transition hover:bg-sky-700">
             ثبت
           </button>

@@ -1,6 +1,9 @@
 "use client";
 
 import { useRef, useState } from "react";
+import ImageDescription from "./imgDescription";
+import { Suspense } from "react";
+import Loading from "../loading";
 
 const Slider = ({ imgs }) => {
   const imgStyle = " tansition-transform duration-500 max-w-md object-cover";
@@ -64,14 +67,14 @@ const Slider = ({ imgs }) => {
           {imgs.map((img, i) => {
             return (
               <>
-                <div className="w-max h-max relative">
+                <div className="w-max h-max relative flex justify-center items-center my-auto">
                   <img
                     key={i}
                     onClick={(e) => handleImgClick(i, e)}
                     src={img.url}
                     className={
                       selectedImgIndex === false
-                        ? `${imgStyle} w-60  h-80  lg:w-max lg:h-max opacity-100 z-10 select-none rounded-2xl ${
+                        ? `${imgStyle} w-60  h-80  lg:w-max lg:h-max cursor-pointer opacity-100 z-10 select-none rounded-2xl   ${
                             isRuning ? "scale-90" : "scale-100"
                           }`
                         : selectedImgIndex === i
@@ -84,13 +87,14 @@ const Slider = ({ imgs }) => {
                     draggable={false}
                   />
 
-                  <h1
+                  <div
                     className={`absolute top-1/2 font-bold -right-5 text-6xl z-50 text-black-300 ${
                       selectedImgIndex === i ? "" : "hidden"
                     }`}
                   >
-                    dajdksajd
-                  </h1>
+                    <h1 className="text-white font-serif">{img.data.name}</h1>
+                    <ImageDescription description={img.data.description} />
+                  </div>
                 </div>
               </>
             );

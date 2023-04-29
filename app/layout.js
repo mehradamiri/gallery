@@ -1,4 +1,6 @@
 import "./globals.css";
+import { Suspense } from "react";
+import Loading from "./loading";
 
 export const metadata = {
   title: "Create Next App",
@@ -9,7 +11,15 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className="h-screen w-screen bg-stone-300 overflow-hidden">
-        {children}
+        <Suspense
+          fallback={
+            <h1 className="text-center text-white bg-black text-9xl">
+              loading..
+            </h1>
+          }
+        >
+          {children}
+        </Suspense>
       </body>
     </html>
   );
