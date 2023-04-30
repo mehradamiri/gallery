@@ -21,7 +21,10 @@ const editArt = async () => {
       <div className="flex flex-col px-4 pt-6">
         {data.map((D, i) => {
           return (
-            <div className="h-32 flex justify-between items-center p-2 rounded-xl w-full bg-white my-2">
+            <div
+              key={D.data.id}
+              className="h-32 flex justify-between items-center p-2 rounded-xl w-full bg-white my-2"
+            >
               <img src={D.url} className="h-full rounded-xl" />
               <p>{D.data.name}</p>
               <DeleteItem itemID={D.data.id} />

@@ -6,7 +6,7 @@ import { redirect } from "next/navigation";
 
 const pb = new PocketBase("https://gallery-pb.iran.liara.run");
 
-const logoutPage = () => {
+const LogoutPage = () => {
   useEffect(() => {
     pb.authStore.clear();
     redirect("/login");
@@ -18,4 +18,4 @@ const logoutPage = () => {
   );
 };
 
-export default logoutPage;
+export default LogoutPage;
