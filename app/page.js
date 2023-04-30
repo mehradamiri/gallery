@@ -4,7 +4,7 @@ import { Inter } from "next/font/google";
 import Slider from "./components/slider";
 
 const inter = Inter({ subsets: ["latin"] });
-const pb = new PocketBase("http://127.0.0.1:8090");
+const pb = new PocketBase("https://gallery-pb.iran.liara.run");
 export default async function Home() {
   const getData = async () => {
     const res = await pb.collection("posts").getFullList({ sort: "-created" });
@@ -23,7 +23,7 @@ export default async function Home() {
   const data = await getData();
   return (
     <>
-      <div className="flex p-3 bg-stone-200 items-center w-full h-16">
+      <div className="md:flex p-3 bg-stone-200 items-center w-full h-16 hidden">
         <div className="bg-black h-full w-7 rounded-l-full"></div>
         <span className="mx-2 text-2xl font-bold">shayan gallery</span>
       </div>

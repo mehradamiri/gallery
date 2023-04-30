@@ -11,6 +11,7 @@ a {
 h1 {
   font-size: 50px !important;
   margin-bottom: 25px !important;
+  text-shadow: 0px 2px 14px black;
 }
 a {
   color: rgb(38, 38, 134) !important;

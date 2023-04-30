@@ -5,7 +5,8 @@ import PocketBase from "pocketbase";
 import { redirect } from "next/navigation";
 import Link from "next/link";
 
-const pb = new PocketBase("http://127.0.0.1:8090");
+const pb = new PocketBase("https://gallery-pb.iran.liara.run");
+// console.log(process.env.LINK);
 
 function LoginPage() {
   const [username, setUsername] = useState("");

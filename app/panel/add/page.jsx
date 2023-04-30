@@ -17,7 +17,7 @@ const AddArt = () => {
   const Uploader = useRef(null);
   // const MySwal = withReactContent(Swal);
 
-  const pb = new PocketBase("http://127.0.0.1:8090");
+  const pb = new PocketBase("https://gallery-pb.iran.liara.run");
 
   const submitHandle = async (e) => {
     e.preventDefault();

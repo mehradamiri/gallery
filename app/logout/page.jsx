@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import PocketBase from "pocketbase";
 import { redirect } from "next/navigation";
 
-const pb = new PocketBase("http://127.0.0.1:8090");
+const pb = new PocketBase("https://gallery-pb.iran.liara.run");
 
 const logoutPage = () => {
   useEffect(() => {

@@ -43,6 +43,9 @@ const Slider = ({ imgs }) => {
   const handleImgClick = (index, e) => {
     e.stopPropagation();
     setSelectedImgIndex(index);
+    const el = document.getElementById(`id_${index}`);
+    el.scrollIntoView({ behavior: "smooth", inline: "center" });
+    handleMouseUp();
   };
 
   const handleOverClick = (e) => {
@@ -70,6 +73,7 @@ const Slider = ({ imgs }) => {
                 <div className="w-max h-max relative flex justify-center items-center my-auto">
                   <img
                     key={i}
+                    id={`id_${i}`}
                     onClick={(e) => handleImgClick(i, e)}
                     src={img.url}
                     className={
@@ -79,7 +83,7 @@ const Slider = ({ imgs }) => {
                           }`
                         : selectedImgIndex === i
                         ? `${imgStyle} w-60 h-80  lg:w-max lg:h-max opacity-100 scale-150 shadow-2xl shadow-black z-100  mx-28 select-none `
-                        : `${imgStyle} w-60 h-80 lg:w-max lg:h-max opacity-80 scale-90 -z-20  select-none`
+                        : `${imgStyle} w-60 h-80 lg:w-max lg:h-max opacity-10 scale-90 -z-20  select-none`
                     }
                     style={{
                       objectPosition: `${nextPercentage + 100}% 50%`,
@@ -100,6 +104,7 @@ const Slider = ({ imgs }) => {
             );
           })}
         </div>
+        {/* <div className="bg-black w-max p-3 ">see more</div> {center this}  */}
       </div>
     </>
   );
