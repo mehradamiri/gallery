@@ -7,7 +7,6 @@ import "react-quill/dist/quill.snow.css";
 import PocketBase from "pocketbase";
 import { useRef, useState } from "react";
 import Link from "next/link";
-import Gaurd from "@/app/components/Gaurd";
 
 const AddArt = () => {
   const [description, setDescription] = useState("");
@@ -36,11 +35,6 @@ const AddArt = () => {
         })
       )
       .catch((err) => {
-        Swal.fire({
-          title: err.message,
-          icon: "error",
-          position: "bottom-right",
-        });
         console.error(err);
         setErr(true);
       });
