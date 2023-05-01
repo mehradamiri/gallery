@@ -2,7 +2,7 @@
 
 import { useRef, useState } from "react";
 import ImageDescription from "./imgDescription";
-import { Suspense } from "react";
+import React from "react";
 import Loading from "../loading";
 
 const Slider = ({ imgs }) => {
@@ -69,10 +69,9 @@ const Slider = ({ imgs }) => {
         >
           {imgs.map((img, i) => {
             return (
-              <>
+              <React.Fragment key={img.data.id}>
                 <div className="w-max h-max relative flex justify-center items-center my-auto">
                   <img
-                    key={i}
                     id={`id_${i}`}
                     onClick={(e) => handleImgClick(i, e)}
                     src={img.url}
@@ -100,14 +99,13 @@ const Slider = ({ imgs }) => {
                     <ImageDescription description={img.data.description} />
                   </div>
                 </div>
-              </>
+              </React.Fragment>
             );
           })}
         </div>
-        {/* <div className="bg-black w-max p-3 ">see more</div> {center this}  */}
       </div>
     </>
   );
 };
-// "${imgStyle} opacity-100 scale-100"
+
 export default Slider;

@@ -10,7 +10,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className="h-screen w-screen bg-stone-300 overflow-hidden">
+      <body
+        className="h-screen w-screen bg-stone-300 overflow-hidden"
+        suppressHydrationWarning={true}
+      >
         <Suspense
           fallback={
             <h1 className="text-center text-white bg-black text-9xl">

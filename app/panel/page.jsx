@@ -8,7 +8,7 @@ import { redirect } from "next/navigation";
 
 const pb = new PocketBase("https://gallery-pb.iran.liara.run");
 
-const panelPage = () => {
+const PanelPage = () => {
   useEffect(() => {
     // if (!pb.authStore.isValid) {
     //   redirect("login");
@@ -32,6 +32,7 @@ const panelPage = () => {
                         src="icons/cut.svg"
                         width={25}
                         height={25}
+                        alt="seaser icon"
                       />
                     </div>
                   </div>
@@ -48,6 +49,7 @@ const panelPage = () => {
                         src="icons/plus.svg"
                         width={30}
                         height={30}
+                        alt="plus icon"
                       />
                     </div>
                   </div>
@@ -69,4 +71,4 @@ const panelPage = () => {
   );
 };
 
-export default panelPage;
+export default PanelPage;
